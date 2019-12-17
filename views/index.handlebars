@@ -1,0 +1,59 @@
+<div class="card col-6" style= "float: right">
+    <div class="card-body">
+        <h1>Availbe to eat</h1>
+        <ul class="list-group">
+            {{#each burgers}}
+            {{#unless this.devoured}}
+            <li class="list-group-item">
+                <div class="input-group">
+                    <p class="lead">{{this.burger_name}}</p>
+                    <span class="input-group-btn">
+
+                        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+                            <input type="hidden" name="devoured" value="true">
+                            <button type="submit" class="btn btn-light">Eat me!</button>
+
+                        </form>
+                    </span>
+                </div>
+
+            </li>
+            {{/unless}}
+            {{/each}}
+        </ul>
+
+    </div>
+</div>
+<div class="card col-6" style= "float: left">
+    <div class="card-body">
+        <h1>Eaten already</h1>
+        <ul class="list-group">
+            {{#each burgers}}
+            {{#if this.devoured}}
+            <li class="list-group-item">
+                <div class="input-group">
+                    <p class="lead">{{this.burger_name}}</p>
+                </div>
+
+            </li>
+            {{/if}}
+            {{/each}}
+        </ul>
+
+    </div>
+</div>
+
+
+
+<div class="card col-10">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Add a Burger!</label>
+                <input type="email" class="form-control" id="addBurger" aria-describedby="emailHelp">
+                <button type="submit" class="btn btn-light">Light</button>
+
+            </div>
+
+    </div>
+</div>
